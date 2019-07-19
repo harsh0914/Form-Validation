@@ -1,21 +1,21 @@
 {
-  "name": "final-project",
+  "name": "Individual_Project",
   "version": "1.0.0",
-  "description": "CSC 648 Team 2 Final Project",
+  "description": "CSC 842 Individual Project",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/CSC-648-SFSU/csc648-su19-TeamNN-AlexWolski.git"
+    "url": "git+https://github.com/harsh0914/Individual_Project.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/CSC-648-SFSU/csc648-su19-TeamNN-AlexWolski/issues"
+    "url": "https://github.com/harsh0914/Individual_Project.git/issues"
   },
-  "homepage": "https://github.com/CSC-648-SFSU/csc648-su19-TeamNN-AlexWolski#readme",
+  "homepage": "https://github.com/harsh0914/Individual_Project/blob/master/README.md",
   "dependencies": {
     "express": "^4.17.1",
     "mysql": "^2.17.1",
