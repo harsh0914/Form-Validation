@@ -21,15 +21,30 @@
       var alphareg = /^[A-Za-z]+$/;
       var addreg=/^.{5,40}$/;
       var mailreg=/^$|^\w+[\w-\.\_]*\@\w+((-\w+)|(\w*))\.[a-z]{2,3}$/;
-      var pwdreg=/^(?=[^\d_].*?\d)\w(\w|[!@#$%]){7,20}$/
+      var pwdreg=/^$|^(?=[^\d_].*?\d)\w(\w|[!@#$%]){7,20}$/;
               
-            window.onload = function() {
+               window.onload = function() { 
                var $recaptcha = document.querySelector('#g-recaptcha-response');
 
                 if($recaptcha) {
                $recaptcha.setAttribute("required", "required");
                }};
+             
+               function initMap() {
+               var map = new google.maps.Map(
+               document.getElementById('map'), {center: document.querySelector("#street"), zoom: 15});}
+              
+               function dispResults() {
+                 if(validInput("#fname",alphareg) && validInput("#lname",alphareg) && validInput("#street",addreg) && validInput("#phno",numreg)&&validInput("#lname",alphareg)&&validInput("#email",mailreg)&& confirm_email()&&validInput("#pwd",pwdreg)&&chkTerms()&&grecaptcha.getResponse())
+                 {document.write("Name:<h3 id='fName'>"+document.querySelector('#fName').value+"</h3> <h3 id='lName'>"+document.querySelector('#lName').value+"</h3><br>"+"Address: <h3 id='street'>"+document.querySelector('#street').value+"</h3><br>"+"Education: <h3 id='eduselect'>"+document.querySelector('#eduSelect').value +"</h3><br>Income: <h3 id='income'>"+document.querySelector('#IncSelect').value+"</h3> <br> Phone: <h3 id='phno'>"+document.querySelector('#phno').value+"</h3><br>User Email: <h3 id='email'>"+document.querySelector('#email').value)+"</h3>"}
+                 else
+                 document.querySelector("#Submit").innerHTML="Please correct the errors on the form and try again";
 
+              };
+              function chkTerms()
+              {
+                 return document.querySelector("#chkbox").checked
+              }
               function validInput(fld, reqExp){
                   obj=document.querySelector(fld);
                   if (!obj.value.match(reqExp))
@@ -61,7 +76,7 @@
    </script>
    <body>
       <div style="width: 65%; margin: 0 auto;">
-         <form   style="color: #757575" id=signUpFrm>
+         <form id="signUpFrm">
             <div class="form-control" style="margin-bottom: 4px; background-color: royalblue; text-align:center">
                <h5 style="color: seashell;">Sign Up</h5>
             </div>
@@ -83,10 +98,10 @@
                   <td>
                      <select id="eduSelect">
                         <option value="" disabled selected>Choose not to Say</option>
-                        <option value="1">High School</option>
-                        <option value="2">College</option>
-                        <option value="3">Gradtuate Studies</option>
-                        <option value="4">Ph.D</option>
+                        <option value="High School">High School</option>
+                        <option value="College">College</option>
+                        <option value="Gradtuate Studies">Gradtuate Studies</option>
+                        <option value="Ph.D">Ph.D</option>
                      </select>
                   </td>
                </tr>
@@ -97,9 +112,9 @@
                   <td>
                      <select id="IncSelect">
                      <option value="" disabled selected>Choose not to Say</option>
-                     <option value="1">less than $ 50K</option>
-                     <option value="2">between $50-100 K</option>
-                     <option value="3">above $100 K</option>
+                     <option value="less than $ 50K">less than $ 50K</option>
+                     <option value="between $50-100 K">between $50-100 K</option>
+                     <option value="above $100 K">above $100 K</option>
                   </td>
                </tr>
             </table>
@@ -126,7 +141,8 @@
                <input type="checkbox" class="form-check-input" id="chkbox" required>I Agree to the <a href="">terms and conditions</a>
             </div>
             <div class="g-recaptcha" data-sitekey="6LdI2a8UAAAAAC36tXbZ6nu_OiCtGuJRRwTTFMtN"></div>
-            <button class="btn btn-outline-info btn-rounded btn-block my-4 waves-effect z-depth-0" type="submit">Sign Up</button>
+            <button class="btn btn-outline-info btn-rounded btn-block my-4 waves-effect z-depth-0" onclick="dispResults()">Sign Up</button>
+            <small id="submit" style="color: red"></small>
          </form>
       </div>
       </form>
