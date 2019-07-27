@@ -3,7 +3,6 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
       <meta http-equiv="x-ua-compatible" content="ie=edge">
-      
       <title>Mera Design</title>
       <!-- Captcha script -->
       <script src="https://www.google.com/recaptcha/api.js" async defer></script>
@@ -25,7 +24,7 @@
               
                window.onload = function() { 
                var $recaptcha = document.querySelector('#g-recaptcha-response');
-
+      
                 if($recaptcha) {
                $recaptcha.setAttribute("required", "required");
                }};
@@ -39,7 +38,7 @@
                  {document.write("Name:<h3 id='fName'>"+document.querySelector('#fName').value+"</h3> <h3 id='lName'>"+document.querySelector('#lName').value+"</h3><br>"+"Address: <h3 id='street'>"+document.querySelector('#street').value+"</h3><br>"+"Education: <h3 id='eduselect'>"+document.querySelector('#eduSelect').value +"</h3><br>Income: <h3 id='income'>"+document.querySelector('#IncSelect').value+"</h3> <br> Phone: <h3 id='phno'>"+document.querySelector('#phno').value+"</h3><br>User Email: <h3 id='email'>"+document.querySelector('#email').value)+"</h3>"}
                  else
                  document.querySelector("#Submit").innerHTML="Please correct the errors on the form and try again";
-
+      
               };
               function chkTerms()
               {
@@ -80,16 +79,12 @@
             <div class="form-control" style="margin-bottom: 4px; background-color: royalblue; text-align:center">
                <h5 style="color: seashell;">Sign Up</h5>
             </div>
-
             <input type="text" id="fName" placeholder="* First Name" class="form-control" pattern="[A-Za-z]{1,40}" onblur="validInput('#fName',alphareg)" required>
             <small id="fNameError"style="color: red"></small>
-            
             <input type="text" id="lName" class="form-control" placeholder="* Last name" pattern="[A-Za-z]{1,40}" onblur="validInput('#lName',alphareg)" required>
             <small id="lNameError"style="color: red"></small>
-            
             <input type="text" id="street" class="form-control" placeholder="* Street Address" pattern=.{5,40} required onblur="validInput('#street',addreg)">
             <small id="streetError"style="color: red"></small>
-            
             <table style="position:relative">
                <tr>
                   <td>
@@ -118,25 +113,20 @@
                   </td>
                </tr>
             </table>
-            
             <input  id="phno" class="form-control" aria-describedby="materialRegisterFormPhoneHelpBlock" placeholder="* Phone Number" type="tel" id="phone" name="phone"
                pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" onblur="validInput('#phno',numreg)" required>
             <small id=phnoError style="color: red"></small>  
             <small id="materialRegisterFormPhoneHelpBlock" class="form-text text-muted mb-4">
             (Format : xxx-xxx-xxxx) We will use this in case of emergency only.</small>
-            
             <input type="email" id="Email" class="form-control" placeholder="Email" pattern="^\w+[\w-\.\_]*\@\w+((-\w+)|(\w*))\.[a-z]{2,3}$" onblur="validInput('#Email',mailreg)">
             <small id="Emailerror" style="color: red"></small>
-            
             <input type="text" id="cnfrm_email" class="form-control" placeholder="Confirm Email" onblur="confirm_email('#Email','#cnfrm_email')" >
             <small id="cnfrm_emailerror" style="color: red"></small>
-            
             <input type="password" id="pwd" class="form-control" aria-describedby="materialRegisterFormPasswordHelpBlock" placeholder="Password" pattern="^(?=[^\d_].*?\d)\w(\w|[!@#$%]){7,20}" onblur="validInput('#pwd',pwdreg)">
             <small id="pwdError" style="color: red"></small>
             <small id="materialRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4">
             Start with an alphabet(8~20 char long), have atleast 1 digit. 
             </small>
-
             <div class="card-body px-lg-5 pt-0">
                <input type="checkbox" class="form-check-input" id="chkbox" required>I Agree to the <a href="">terms and conditions</a>
             </div>
