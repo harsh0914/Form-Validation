@@ -22,7 +22,14 @@
       var addreg=/^.{5,40}$/;
       var mailreg=/^$|^\w+[\w-\.\_]*\@\w+((-\w+)|(\w*))\.[a-z]{2,3}$/;
       var pwdreg=/^(?=[^\d_].*?\d)\w(\w|[!@#$%]){7,20}$/
-                 
+              
+            window.onload = function() {
+               var $recaptcha = document.querySelector('#g-recaptcha-response');
+
+                if($recaptcha) {
+               $recaptcha.setAttribute("required", "required");
+               }};
+
               function validInput(fld, reqExp){
                   obj=document.querySelector(fld);
                   if (!obj.value.match(reqExp))
@@ -34,7 +41,7 @@
                   document.querySelector(fld+"Error").innerHTML="";
                   return true;
                   }
-              }
+              };
               function confirm_email(){
                   obj1=document.querySelector("#Email");
                   obj2=document.querySelector("#cnfrm_email");
@@ -50,7 +57,7 @@
                       return false;
       
                   }
-              }        
+              };        
    </script>
    <body>
       <div style="width: 65%; margin: 0 auto;">
@@ -118,7 +125,7 @@
             <div class="card-body px-lg-5 pt-0">
                <input type="checkbox" class="form-check-input" id="chkbox" required>I Agree to the <a href="">terms and conditions</a>
             </div>
-            <div class="g-recaptcha" data-sitekey="6Lfxyq8UAAAAAJhOuca1TZU2i2weMiilE0hz-yW2"></div>
+            <div class="g-recaptcha" data-sitekey="6LdI2a8UAAAAAC36tXbZ6nu_OiCtGuJRRwTTFMtN"></div>
             <button class="btn btn-outline-info btn-rounded btn-block my-4 waves-effect z-depth-0" type="submit">Sign Up</button>
          </form>
       </div>
