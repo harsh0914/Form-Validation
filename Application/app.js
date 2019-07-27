@@ -15,5 +15,5 @@ app.get('/', (request, response) => {
 })
 
 http.listen(8080, () => {
-	console.log("Server is up and listening on 3000...")
+	console.log("Server is up and listening on 8080...")
 })

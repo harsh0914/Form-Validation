@@ -1,0 +1,123 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Mera Design</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="css/mdb.min.css" rel="stylesheet">
+    <!-- Your custom styles (optional) -->
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<script>
+    var numreg =/^[2-9]\d{2}-\d{3}-\d{4}$/;
+    var alphareg = /^[A-Za-z]+$/;
+    var addreg=/^.{5,40}$/;
+    var mailreg=/^$|^\w+[\w-\.\_]*\@\w+((-\w+)|(\w*))\.[a-z]{2,3}$/;
+
+
+                
+            function validInput(fld, reqExp){
+                obj=document.querySelector(fld);
+                if (!obj.value.match(reqExp))
+                {document.querySelector(fld+"Error").innerHTML="Invalid input, please try again. rite to formadmin@genius.com if you feel this is an error";
+                return false;
+                }
+                else
+                {
+                document.querySelector(fld+"Error").innerHTML="";
+                return true;
+                }
+            }
+            function confirm_email(){
+                obj1=document.querySelector("#Email");
+                obj2=document.querySelector("#cnfrm_email");
+                if (obj1.value==obj2.value)
+                {
+                    obj2=document.querySelector("#cnfrm_emailerror").innerHTML="";
+                    return true;
+                }
+                else
+                {
+                    
+                    obj2=document.querySelector("#cnfrm_emailerror").innerHTML="Confirm email does not match";
+                    return false;
+
+                }
+            }        
+</script>
+<body>
+
+<div style="width: 65%; margin: 0 auto;">
+    
+        <form   style="color: #757575" id=signUpFrm>
+                
+                <div class="form-control" style="margin-bottom: 4px; background-color: royalblue; text-align:center"><h5 style="color: seashell;">Sign Up</h5></div>
+                <input type="text" id="fName" placeholder="* First Name" class="form-control" pattern="[A-Za-z]{1,40}" onblur="validInput('#fName',alphareg)" required>
+                <small id="fNameError"style="color: red"></small>
+
+                <input type="text" id="lName" class="form-control" placeholder="* Last name" pattern="[A-Za-z]{1,40}" onblur="validInput('#lName',alphareg)" required>
+                <small id="lNameError"style="color: red"></small>
+
+                <input type="text" id="street" class="form-control" placeholder="* Street Address" pattern=.{5,40} required onblur="validInput('#street',addreg)">
+                <small id="streetError"style="color: red"></small>
+ <table>
+    <tr>
+        <td>
+           <p>Education:</p>
+        </td>
+        <td>
+                <select id="eduSelect">
+                        <option value="" disabled selected>Choose not to Say</option>
+                        <option value="1">High School</option>
+                        <option value="2">College</option>
+                        <option value="3">Gradtuate Studies</option>
+                        <option value="4">Ph.D</option></select>
+        </td>
+    </tr>
+    <tr>
+        <td><p>Income:</p>
+        </td>
+        <td>
+                <select id="IncSelect">
+                        <option value="" disabled selected>Choose not to Say</option>
+                        <option value="1">less than $ 50K</option>
+                        <option value="2">between $50-100 K</option>
+                        <option value="3">above $100 K</option> 
+        </td>
+    </tr>
+</table>
+
+ <input  id="phno" class="form-control" aria-describedby="materialRegisterFormPhoneHelpBlock" placeholder="* Phone Number" type="tel" id="phone" name="phone"
+            pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" onblur="validInput('#phno',numreg)" required>
+            <small id=phnoError style="color: red"></small>  
+            <small id="materialRegisterFormPhoneHelpBlock" class="form-text text-muted mb-4">
+                    (Format : xxx-xxx-xxxx) We will use this in case of emergency only.</small>
+
+                <input type="email" id="Email" class="form-control" placeholder="Email" pattern="^\w+[\w-\.\_]*\@\w+((-\w+)|(\w*))\.[a-z]{2,3}$" onblur="validInput('#Email',mailreg)">
+                <small id="Emailerror" style="color: red"></small>
+
+                <input type="text" id="cnfrm_email" class="form-control" placeholder="Confirm Email" onblur="confirm_email('#Email','#cnfrm_email')" >
+                <small id="cnfrm_emailerror" style="color: red"></small>
+
+                <input type="password" id="materialRegisterFormPassword" class="form-control" aria-describedby="materialRegisterFormPasswordHelpBlock" placeholder="Password">
+                <small id="materialRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4">
+                        At least 8 characters and 1 digit
+                </small>
+                
+                <div class="card-body px-lg-5 pt-0"><input type="checkbox" class="form-check-input" id="materialRegisterFormNewsletter" required>I Agree to <a href="">terms and conditions</a></div>
+                        
+                <button class="btn btn-outline-info btn-rounded btn-block my-4 waves-effect z-depth-0" type="submit" style="color: royalblue">Sign Up</button>
+        
+
+        </form>
+    </div>
+
+        </form>
+</div>
+</body> 
+</html> 

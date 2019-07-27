@@ -1,0 +1,94 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Mera Design</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="css/mdb.min.css" rel="stylesheet">
+    <!-- Your custom styles (optional) -->
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<script>
+        function validName(fld){
+            var letters = /^[A-Za-z]+$/;
+            obj=document.querySelector(fld)
+            if (!obj.value.match(letters))
+            {document.querySelector(fld+"Error").innerHTML="Please enter text only";
+             return false;
+            }
+            else
+            {
+                document.querySelector(fld+"Error").innerHTML="";
+                return true;
+            }            
+            
+            
+        }
+       
+    </script>
+<body>
+<div style="width: 65%; margin: 0 auto; background-color: royalblue" id="signUpFrm">
+<h5><strong>Sign up</strong></h5></div>
+<div style="width: 65%; margin: 0 auto;">
+        <form style="color: #757575" id=signUpFrm>
+                <input type="text" id="fName" placeholder="* First Name" pattern="[A-Za-z]{1,10}" onblur="validName('#fName')"required>
+                <small id="fNameError"style="color: red"></small>
+                <input type="text" id="lName" class="form-control" placeholder="* Last name" pattern="[A-Za-z]{1,40}" onblur="validName('#lName')"required>
+                <small id="lNameError"style="color: red"></small>
+                <input type="text" id="street" class="form-control" placeholder="* Street Address" required>
+<table>
+    <tr>
+        <td>
+            Education:
+        </td>
+        <td>
+                <select id="eduSelect">
+                        <option value="" disabled selected>Choose not to Say</option>
+                        <option value="1">High School</option>
+                        <option value="2">College</option>
+                        <option value="3">Gradtuate Studies</option>
+                        <option value="4">Ph.D</option></select>
+        </td>
+    </tr>
+    <tr>
+        <td>Income:
+        </td>
+        <td>
+                <select id="IncSelect">
+                        <option value="" disabled selected>Choose not to Say</option>
+                        <option value="1">less than $ 50K</option>
+                        <option value="2">between $50-100 K</option>
+                        <option value="3">above $100 K</option> 
+        </td>
+    </tr>
+</table>
+<input  id="phno" class="form-control" aria-describedby="materialRegisterFormPhoneHelpBlock" placeholder="* Phone Number" type="tel" id="phone" name="phone"
+            pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+            required>
+                    <small id="materialRegisterFormPhoneHelpBlock" class="form-text text-muted mb-4">
+                    (Format:xxx-xxx-xxxx) This will be used in case of emergency only.</small>
+                    <small id=phError style="color: red"></small>  
+
+                <input type="email" id="materialRegisterFormEmail" class="form-control" placeholder="Email">
+                <input type="text" id="cnfrm_email" class="form-control" placeholder="Confirm Email">
+                <input type="password" id="materialRegisterFormPassword" class="form-control" aria-describedby="materialRegisterFormPasswordHelpBlock" placeholder="Password">
+                    <small id="materialRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4">
+                        At least 8 characters and 1 digit
+                    </small>
+                <div class="card-body px-lg-5 pt-0"><input type="checkbox" class="form-check-input" id="materialRegisterFormNewsletter">I Agree to terms and conditions</div>
+                        
+                <button class="btn btn-outline-info btn-rounded btn-block my-4 waves-effect z-depth-0" type="submit">Sign Up</button>
+        
+
+        </form>
+    </div>
+
+        </form>
+</div>
+</body> 
+</html> 
