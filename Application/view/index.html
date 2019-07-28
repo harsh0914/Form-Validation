@@ -70,41 +70,13 @@
       
                   }
               }; 
-              
-              function initMap() {
-               var map = new google.maps.Map(document.getElementById('map'), {
-               zoom: 8,
-               center: {lat: -34.397, lng: 150.644}
-               });
-               var geocoder = new google.maps.Geocoder();
-
-               document.getElementById('chkbox').addEventListener('click', function() {
-               geocodeAddress(geocoder, map);
-               });
-               } 
-
-               function geocodeAddress(geocoder, resultsMap) {
-               var address = document.getElementById('street').value
-               geocoder.geocode({'address': address}, function(results, status) 
-               {
-               if (status === 'OK') {
-//               alert(results[0].geometry.location.lat().toString())
-  //             alert(results[0].geometry.location.lng().toString())
-               localStorage.setItem("loclatlng",(results[0].geometry.location.toString()));
-               
-   
-               } 
-               else {alert('Geocode was not successful for the following reason: ' + status);}
-               });
-               }
-      
-   </script>
+       </script>
    <body>
       <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCUXgb-Kajxm7KPMsApHtESHeU2XDQ29XY&callback=initMap"></script>   
       <div style="width: 65%; margin: 0 auto;">
          <div id=map style="width: 320px; height: 1px;"></div>
          <form id="signUpFrm" action="./results.html">
-            <div class="form-control" style="margin-bottom: 4px; height:85px; text-align:center">
+            <div style="margin-bottom: 4px;text-align:center">
                <h5 style="color: black;">CSC 642 Summer 2019<br>Individual Assignment : Harshveer Saini<br>“Registration form”</h5>
             </div>
             <div class="form-control" style="margin-bottom: 4px; background-color: royalblue; text-align:center">
