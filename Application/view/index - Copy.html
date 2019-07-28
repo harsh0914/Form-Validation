@@ -3,8 +3,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
       <meta http-equiv="x-ua-compatible" content="ie=edge">
-      <title>CSC 642 Summer 2019 Individual Assignment Harshveer Saini “Registration form”
-      </title>
+      <title>SignUp -Harshveer Saini</title>
       <!-- Captcha script -->
       <script src="https://www.google.com/recaptcha/api.js" async defer></script>
       <!-- Font Awesome -->
@@ -20,29 +19,30 @@
       var numreg =/^[2-9]\d{2}-\d{3}-\d{4}$/;
       var alphareg = /^[A-Za-z]+$/;
       var addreg=/^.{5,40}$/;
-      var mailreg=/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
-                            
+      var mailreg=/^\w+[\w-\.\_]*\@\w+((-\w+)|(\w*))\.[a-z]{2,3}$/;
+      var pwdreg=/^(?=[^\d_].*?\d)\w(\w|[!@#$%]){7,20}$/;
+              
+               window.onload = function() { 
+               var $recaptcha = document.querySelector('#g-recaptcha-response');
+      
+                if($recaptcha) {
+               $recaptcha.setAttribute("required", "required");
+               }};
+             
                function initMap() {
                var map = new google.maps.Map(
                document.getElementById('map'), {center: document.querySelector("#street"), zoom: 15});}
               
-               function check(){
-    if (grecaptcha.getResponse() === '') {                            
-      //document.querySelector("#signUpfrm").preventDefault();
-      document.querySelector("#Submit").innerHTML="Please make sure all fields are filled correctly and the captcha is checked then try again";
-      return false;
-    }
-    else{localStorage.setItem("fName", document.querySelector('#fName').value);
-                  localStorage.setItem("lName", document.querySelector('#lName').value);
-                  localStorage.setItem("Street", document.querySelector('#street').value);
-                  localStorage.setItem("eduSelect", document.querySelector('#eduSelect').value);
-                  localStorage.setItem("incSelect", document.querySelector('#IncSelect').value);
-                  localStorage.setItem("phno", document.querySelector('#phno').value);
-                  localStorage.setItem("email", document.querySelector('#email').value);
-                  return true;
+               function dispResults() {
+                 if(validInput("#fname",alphareg) && validInput("#lname",alphareg) && validInput("#street",addreg) && validInput("#phno",numreg)&&validInput("#lname",alphareg)&&validInput("#email",mailreg)&& confirm_email()&&validInput("#pwd",pwdreg)&&chkTerms()&&grecaptcha.getResponse())
+                 {document.write("<table><tr><td>Name:</td><td id=Name>"+document.querySelector('#fName').value+' '+document.querySelector('#lName').value+"</td></tr>" +"<tr><td>Address:</td> <td><input type='text' id='street' style='width: 235px' disabled value='"+document.querySelector('#street').value+"'></td></tr><tr>"+"<td>Education:</td> <td><input type='text' id='eduselect' style='width: 235px' disabled value='"+document.querySelector('#eduSelect').value +"'></td></tr><tr><td>Income: </td><td><input type='text' id='income' style='width: 235px' disabled value='"+document.querySelector('#IncSelect').value+"'></td></tr> <tr> <td>Phone: </td><td><input type='text' id='phno' style='width: 235px' disabled value='"+document.querySelector('#phno').value+"'></td></tr><tr><td>User Email: </td><td><input type='text' id='email' style='width: 235px' disabled value='"+document.querySelector('#email').value+"'></td></tr></table>");
+                 document.write("<script src='https://maps.googleapis.com/maps/api/js?key=AIzaSyCOtvRaI9Jnr4MqowqXOuzHaeByCeYDycs&callback=initMap' async defer>");
+                  document.write("<div id=map><script>var map;function initMap() {map = new google.maps.Map(document.getElementById('map'), {center: {lat: -34.397, lng: 150.644},zoom: 8});}");
                  }
-                 }
-               
+                 else
+                 document.querySelector("#Submit").innerHTML="Please correct the errors on the form and try again";
+      
+              };
               function chkTerms()
               {
                  return document.querySelector("#chkbox").checked
@@ -78,12 +78,9 @@
    </script>
    <body>
       <div style="width: 65%; margin: 0 auto;">
-         <form id="signUpFrm" action="./results.html">
-            <div class="form-control" style="margin-bottom: 4px; height:85px; text-align:center">
-               <h5 style="color: black;">CSC 642 Summer 2019<br>Individual Assignment : Harshveer Saini<br>“Registration form”</h5>
-            </div>
+         <form id="signUpFrm" action="http://ec2-18-218-153-63.us-east-2.compute.amazonaws.com:8080/mera.html">
             <div class="form-control" style="margin-bottom: 4px; background-color: royalblue; text-align:center">
-               <h5 style="color: seashell;">Sign Up Form</h5>
+               <h5 style="color: seashell;">Sign Up</h5>
             </div>
             <input type="text" id="fName" placeholder="* First Name" class="form-control" pattern="[A-Za-z]{1,40}" onblur="validInput('#fName',alphareg)" required>
             <small id="fNameError"style="color: red"></small>
@@ -91,7 +88,6 @@
             <small id="lNameError"style="color: red"></small>
             <input type="text" id="street" class="form-control" placeholder="* Street Address" pattern=.{5,40} required onblur="validInput('#street',addreg)">
             <small id="streetError"style="color: red"></small>
-            <hr>
             Education:
             <select id="eduSelect" class="browser-default custom-select" >
                         <option value="" disabled selected>Choose not to Say</option>
@@ -112,7 +108,7 @@
             <small id=phnoError style="color: red"></small>  
             <small id="materialRegisterFormPhoneHelpBlock" class="form-text text-muted mb-4">
             (Format : xxx-xxx-xxxx) We will use this in case of emergency only.</small>
-            <input type="email" id="Email" class="form-control" placeholder="Email" onblur="validInput('#Email',mailreg)">
+            <input type="email" id="Email" class="form-control" placeholder="Email" pattern="^\w+[\w-\.\_]*\@\w+((-\w+)|(\w*))\.[a-z]{2,3}$" onblur="validInput('#Email',mailreg)">
             <small id="Emailerror" style="color: red"></small>
             <input type="text" id="cnfrm_email" class="form-control" placeholder="Confirm Email" onblur="confirm_email('#Email','#cnfrm_email')" >
             <small id="cnfrm_emailerror" style="color: red"></small>
@@ -121,7 +117,7 @@
             </div>
             <div class="g-recaptcha" data-sitekey="6LdI2a8UAAAAAC36tXbZ6nu_OiCtGuJRRwTTFMtN"></div>
             <small id="submit" style="color: red"></small>
-            <button type="submit" class="btn btn-outline-info btn-rounded btn-block my-4 waves-effect z-depth-0" onclick="return check();">Sign Up</button>
+            <button class="btn btn-outline-info btn-rounded btn-block my-4 waves-effect z-depth-0" onclick="dispResults()">Sign Up</button>
             
          </form>
       </div>
