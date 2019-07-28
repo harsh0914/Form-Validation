@@ -16,57 +16,64 @@
       <link rel="stylesheet" href="css/index.css">
    </head>
    <script>
-            if(localStorage.getItem("eduSelect")==null)
-            {localStorage.setItem('eduSelect', '-')}
-            
-            if(localStorage.getItem("incSelect")==null)
-            {localStorage.setItem('incSelect', '-')}
-            
-            if(localStorage.getItem("email")==null)
-            {localStorage.setItem('email', '-')}
-                       
+      if(localStorage.getItem("eduSelect")==null)
+      {localStorage.setItem('eduSelect', '-')}
+      
+      if(localStorage.getItem("incSelect")==null)
+      {localStorage.setItem('incSelect', '-')}
+      
+      if(localStorage.getItem("email")==null)
+      {localStorage.setItem('email', '-')}
+      
+      
+      function initMap() {
+          var llng = localStorage.getItem('latlng');
+      clg=new google.maps.LatLng(llng);
+      
+          var mapOptions = {
+          zoom: 8,
+          center: clg
+          }
+          map = new google.maps.Map(document.getElementById('map'), mapOptions);
+          };     
    </script>
    <body>
-        <div style="width: 65%; margin: 0 auto;">
-            <div class="form-control" style="margin-bottom: 4px; height:85px; text-align:center">
-               <h5 style="color: black;"><br>Results verification page<br>Harshveer Saini</h5>
-        </div>
-            
-            <div class="form-control" style="margin-bottom: 4px; text-align:center">
-                <h5 style="color: rgb(17, 16, 16);" id='Name'>
-                    <script>document.getElementById("Name").innerHTML = "Name: "+localStorage.getItem("fName")+" "+localStorage.getItem("lName");
-                    </script>
-                </h5>
-            </div>
-            <div class="form-control" style="margin-bottom: 4px; text-align:center">
-                <h5 style="color: rgb(17, 16, 16);" id='Address'>
-                    <script>document.getElementById("Address").innerHTML = "Address: "+localStorage.getItem("Street")
-                    </script>
-                </h5>
-            </div>
-            <div class="form-control" style="margin-bottom: 4px; text-align:center">
-                <h5 style="color: rgb(17, 16, 16);" id='Education'>
-                    <script>document.getElementById("Education").innerHTML = "Education: "+localStorage.getItem("eduSelect")
-                    </script>
-                </h5>
-            </div>
-            <div class="form-control" style="margin-bottom: 4px; text-align:center">
-                <h5 style="color: rgb(17, 16, 16);" id='incSelect'>
-                    <script>document.getElementById("incSelect").innerHTML = "Income: "+localStorage.getItem("incSelect")
-                    </script>
-                </h5>
-            </div>
-            <div class="form-control" style="margin-bottom: 4px; text-align:center">
-                <h5 style="color: rgb(17, 16, 16);" id='phno'>
-                    <script>document.getElementById("phno").innerHTML = "Phone Number: "+localStorage.getItem("phno")
-                    </script>
-                </h5>
-            </div>
-            <div class="form-control" style="margin-bottom: 4px; text-align:center">
-                <h5 style="color: rgb(17, 16, 16);" id='email'>
-                    <script>document.getElementById("email").innerHTML = "Email: "+localStorage.getItem("email")
-                    </script>
-                </h5>   
-            </div>
+      <input type="button" onclick="codeAddress(geocoder,map)">
+      <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCUXgb-Kajxm7KPMsApHtESHeU2XDQ29XY&callback=initMap"></script>
+      <div style="width: 65%; margin: 0 auto;">
+      <div class="form-control" style="margin-bottom: 4px; height:85px; text-align:center">
+         <h5 style="color: black;"><br>Results verification page<br>Harshveer Saini</h5>
+      </div>
+      <div class="form-control" style="margin-bottom: 4px; text-align:center">
+         <h5 style="color: rgb(17, 16, 16);" id='Name'>
+            <script>document.getElementById("Name").innerHTML = "Name: "+localStorage.getItem("fName")+" "+localStorage.getItem("lName");</script>
+         </h5>
+      </div>
+      <div class="form-control" style="margin-bottom: 4px; text-align:center">
+         <h5 style="color: rgb(17, 16, 16);" id='Address'>
+            <script>document.getElementById("Address").innerHTML = "Address: "+localStorage.getItem("Street")</script>
+         </h5>
+      </div>
+      <div class="form-control" style="margin-bottom: 4px; text-align:center">
+         <h5 style="color: rgb(17, 16, 16);" id='Education'>
+            <script>document.getElementById("Education").innerHTML = "Education: "+localStorage.getItem("eduSelect")</script>
+         </h5>
+      </div>
+      <div class="form-control" style="margin-bottom: 4px; text-align:center">
+         <h5 style="color: rgb(17, 16, 16);" id='incSelect'>
+            <script>document.getElementById("incSelect").innerHTML = "Income: "+localStorage.getItem("incSelect")</script>
+         </h5>
+      </div>
+      <div class="form-control" style="margin-bottom: 4px; text-align:center">
+         <h5 style="color: rgb(17, 16, 16);" id='phno'>
+            <script>document.getElementById("phno").innerHTML = "Phone Number: "+localStorage.getItem("phno")</script>
+         </h5>
+      </div>
+      <div class="form-control" style="margin-bottom: 4px; text-align:center">
+         <h5 style="color: rgb(17, 16, 16);" id='email'>
+            <script>document.getElementById("email").innerHTML = "Email: "+localStorage.getItem("email")</script>
+         </h5>
+      </div>
+      <div id="map" style="width: 65%; height: 480px;"></div>
    </body>
 </html>

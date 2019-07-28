@@ -22,17 +22,12 @@
       var addreg=/^.{5,40}$/;
       var mailreg=/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
                             
-               function initMap() {
-               var map = new google.maps.Map(
-               document.getElementById('map'), {center: document.querySelector("#street"), zoom: 15});}
-              
-               function check(){
-    if (grecaptcha.getResponse() === '') {                            
-      //document.querySelector("#signUpfrm").preventDefault();
+      function check(){
+      if (grecaptcha.getResponse() === '') {                            
       document.querySelector("#Submit").innerHTML="Please make sure all fields are filled correctly and the captcha is checked then try again";
       return false;
-    }
-    else{localStorage.setItem("fName", document.querySelector('#fName').value);
+      }
+                  else{localStorage.setItem("fName", document.querySelector('#fName').value);
                   localStorage.setItem("lName", document.querySelector('#lName').value);
                   localStorage.setItem("Street", document.querySelector('#street').value);
                   localStorage.setItem("eduSelect", document.querySelector('#eduSelect').value);
@@ -74,10 +69,33 @@
                       return false;
       
                   }
-              };        
+              }; 
+              
+              function initMap() {
+                geocoder = new google.maps.Geocoder();
+                var latlng = new google.maps.LatLng(-34.397, 150.644);
+                var mapOptions = {
+                zoom: 8,
+                center: latlng
+                }
+                map = new google.maps.Map(document.getElementById('map'), mapOptions);
+                }; 
+      
+            function codeAddress() {
+            var address = localStorage.getItem(Street);
+            geocoder.geocode({'address': address}, function(results, status) {
+          if (status === 'OK') {
+            localStorage.setItem('llng',results[0].geometry.location);
+          } else {
+            alert('Geocode was not successful for the following reason: ' + status);
+          }
+        });
+      }      
    </script>
    <body>
+      <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCUXgb-Kajxm7KPMsApHtESHeU2XDQ29XY&callback=initMap"></script>   
       <div style="width: 65%; margin: 0 auto;">
+         <div id=map height=1px></div>
          <form id="signUpFrm" action="./results.html">
             <div class="form-control" style="margin-bottom: 4px; height:85px; text-align:center">
                <h5 style="color: black;">CSC 642 Summer 2019<br>Individual Assignment : Harshveer Saini<br>“Registration form”</h5>
@@ -94,19 +112,18 @@
             <hr>
             Education:
             <select id="eduSelect" class="browser-default custom-select" >
-                        <option value="" disabled selected>Choose not to Say</option>
-                        <option value="High School">High School</option>
-                        <option value="College">College</option>
-                        <option value="Gradtuate Studies">Gradtuate Studies</option>
-                        <option value="Ph.D">Ph.D</option>
-                     </select>
+               <option value="" disabled selected>Choose not to Say</option>
+               <option value="High School">High School</option>
+               <option value="College">College</option>
+               <option value="Gradtuate Studies">Gradtuate Studies</option>
+               <option value="Ph.D">Ph.D</option>
+            </select>
             Income:
-                     <select id="IncSelect" class="browser-default custom-select" style="margin-bottom: 8px">
-                     <option value="" disabled selected>Choose not to Say</option>
-                     <option value="less than $ 50K">less than $50K</option>
-                     <option value="between $50-100 K">between $50-100K</option>
-                     <option value="above $100 K">above $100K</option>
-            
+            <select id="IncSelect" class="browser-default custom-select" style="margin-bottom: 8px">
+            <option value="" disabled selected>Choose not to Say</option>
+            <option value="less than $ 50K">less than $50K</option>
+            <option value="between $50-100 K">between $50-100K</option>
+            <option value="above $100 K">above $100K</option>
             <input  id="phno" class="form-control" aria-describedby="materialRegisterFormPhoneHelpBlock" placeholder="* Phone Number" type="tel" id="phone" name="phone"
                pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" onblur="validInput('#phno',numreg)" required>
             <small id=phnoError style="color: red"></small>  
@@ -117,12 +134,11 @@
             <input type="text" id="cnfrm_email" class="form-control" placeholder="Confirm Email" onblur="confirm_email('#Email','#cnfrm_email')" >
             <small id="cnfrm_emailerror" style="color: red"></small>
             <div class="card-body px-lg-5 pt-0">
-            <input type="checkbox" class="form-check-input" id="chkbox" required>I Agree to the <a href="">terms and conditions</a>
+               <input type="checkbox" class="form-check-input" id="chkbox" required>I Agree to the <a href="">terms and conditions</a>
             </div>
             <div class="g-recaptcha" data-sitekey="6LdI2a8UAAAAAC36tXbZ6nu_OiCtGuJRRwTTFMtN"></div>
             <small id="submit" style="color: red"></small>
-            <button type="submit" class="btn btn-outline-info btn-rounded btn-block my-4 waves-effect z-depth-0" onclick="return check();">Sign Up</button>
-            
+            <button type="submit" class="btn btn-outline-info btn-rounded btn-block my-4 waves-effect z-depth-0" onsubmit="codeAddress()" onclick="return check();">Sign Up</button>
          </form>
       </div>
       </form>
