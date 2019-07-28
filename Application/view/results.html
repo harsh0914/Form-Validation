@@ -1,6 +1,7 @@
 <html>
    <head>
        <style>
+           h6{color: black;}
         h5{color: black;}
             th{text-align:center;}
             td{text-align:left}
@@ -56,19 +57,19 @@
         <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCUXgb-Kajxm7KPMsApHtESHeU2XDQ29XY&callback=initMap"></script>
       
         <div style="margin-bottom: 20; text-align:center"><h5><br>Results verification page<br>Harshveer Saini</h5></div>
-      <div style="width: 50%; margin: 0 auto; text-align:center;left:0; z-index: 1;overflow-x: hidden;position: absolute;padding-top: 20px">
-      <table style="margin-left:10%">
+      <div style="width: 80%; margin: 0 auto; text-align:center; padding-top: 20px">
+      <table>
           
             
-            <tr><td><h5>"Name: "</h5></td><td><h5 id='Name'></h5></td> </tr>
-            <tr><td><h5>"Address: "</h5></td><td><h5 id='Address'></h5></td> </tr>
-            <tr><td><h5>"Education: "</h5></td><td><h5 id='Education'></h5></td> </tr>
-            <tr><td><h5>"Annual Income: "</h5></td><td><h5 id='Income'></h5></td> </tr>
-            <tr><td><h5>"Phone: "</h5></td><td><h5 id='phno'></h5></td> </tr>
-            <tr><td><h5>"Email: "</h5></td><td><h5 id='email'></h5></td> </tr>
+            <tr><td><h5>Name:</h5></td><td><h5 id='Name'></h5></td> </tr>
+            <tr><td><h5>Address:</h5></td><td><h5 id='Address'></h5></td> </tr>
+            <tr><td><h5>Education:</h5></td><td><h5 id='Education'></h5></td> </tr>
+            <tr><td><h6>Annual Income:</h6></td><td><h5 id='Income'></h5></td> </tr>
+            <tr><td><h5>Phone:</h5></td><td><h5 id='phno'></h5></td> </tr>
+            <tr><td><h5>Email:</h5></td><td><h5 id='email'></h5></td> </tr>
                <script>
-                document.getElementById("Address").innerHTML = "Address: "+localStorage.getItem("Street")
-                document.getElementById("Education").innerHTML = "Education: "+localStorage.getItem("eduSelect")
+                document.getElementById("Address").innerHTML = localStorage.getItem("Street")
+                document.getElementById("Education").innerHTML = localStorage.getItem("eduSelect")
                 document.getElementById("Income").innerHTML =localStorage.getItem("incSelect")
                document.getElementById("Name").innerHTML = localStorage.getItem("fName")+" "+localStorage.getItem("lName");
                document.getElementById("email").innerHTML =localStorage.getItem("email")
@@ -76,6 +77,6 @@
                </script>
       </table>   
       </div>
-      <div id="map" style="width: 35%; height: 320px;right:0;z-index: 1; position: absolute; overflow-x: hidden; padding-top: 20px;margin-right:10%"></div>
+      <div id="map" style="width: 80%; height: 320px; padding-top: 20px;margin:10% auto"></div>
    </body>
 </html>
