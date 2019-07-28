@@ -35,8 +35,11 @@
               
                function dispResults() {
                  if(validInput("#fname",alphareg) && validInput("#lname",alphareg) && validInput("#street",addreg) && validInput("#phno",numreg)&&validInput("#lname",alphareg)&&validInput("#email",mailreg)&& confirm_email()&&validInput("#pwd",pwdreg)&&chkTerms())
-                 {document.write("<table><tr><td>Name:</td><td><input type='text' id='fName' disabled value='"+document.querySelector('#fName').value+' '+document.querySelector('#lName').value+"'></td></tr>" +"<tr><td>Address:</td> <td><input type='text' id='street' disabled value='"+document.querySelector('#street').value+"'></td></tr><tr>"+"<td>Education:</td> <td><input type='text' id='eduselect' disabled value='"+document.querySelector('#eduSelect').value +"'></td></tr><tr><td>Income: </td><td><input type='text' id='income' disabled value='"+document.querySelector('#IncSelect').value+"'></td></tr> <tr> <td>Phone: </td><td><input type='text' id='phno' disabled value='"+document.querySelector('#phno').value+"'></td></tr><tr><td>User Email: </td><td><input type='text' id='email' disabled value='"+document.querySelector('#email').value+"'></td></tr></table>");}
-                  document.write("<div id=map>");
+                 {document.write("<table><tr><td>Name:</td><td><input type='text' id='Name' style='width: 235px' disabled value='"+document.querySelector('#fName').value+' '+document.querySelector('#lName').value+"'></td></tr>" +"<tr><td>Address:</td> <td><input type='text' id='street' style='width: 235px' disabled value='"+document.querySelector('#street').value+"'></td></tr><tr>"+"<td>Education:</td> <td><input type='text' id='eduselect' style='width: 235px' disabled value='"+document.querySelector('#eduSelect').value +"'></td></tr><tr><td>Income: </td><td><input type='text' id='income' style='width: 235px' disabled value='"+document.querySelector('#IncSelect').value+"'></td></tr> <tr> <td>Phone: </td><td><input type='text' id='phno' style='width: 235px' disabled value='"+document.querySelector('#phno').value+"'></td></tr><tr><td>User Email: </td><td><input type='text' id='email' style='width: 235px' disabled value='"+document.querySelector('#email').value+"'></td></tr></table>");
+                 document.write("<script src='https://maps.googleapis.com/maps/api/js?key=AIzaSyCOtvRaI9Jnr4MqowqXOuzHaeByCeYDycs&callback=initMap' async defer>");
+                  document.write("<div id=map><script>var map;function initMap() {map = new google.maps.Map(document.getElementById('map'), {center: {lat: -34.397, lng: 150.644},zoom: 8});}");
+                  
+                 }
                  else
                  document.querySelector("#Submit").innerHTML="Please correct the errors on the form and try again";
       
@@ -92,7 +95,7 @@
                      <p>Education:</p>
                   </td>
                   <td>
-                     <select id="eduSelect">
+                     <select id="eduSelect" style="width:180px">
                         <option value="" disabled selected>Choose not to Say</option>
                         <option value="High School">High School</option>
                         <option value="College">College</option>
@@ -106,7 +109,7 @@
                      <p>Income:</p>
                   </td>
                   <td>
-                     <select id="IncSelect">
+                     <select id="IncSelect" style="width: 180px">
                      <option value="" disabled selected>Choose not to Say</option>
                      <option value="less than $ 50K">less than $50K</option>
                      <option value="between $50-100 K">between $50-100K</option>
