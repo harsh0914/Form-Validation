@@ -24,18 +24,22 @@
       
       if(localStorage.getItem("email")==null)
       {localStorage.setItem('email', '-')}
-      
-      
       function initMap() {
-          var llng = localStorage.getItem('latlng');
-      clg=new google.maps.LatLng(llng);
+               var mlatlng=new google.maps.LatLng(localStorage.getItem("loclatlng"))
+               var map = new google.maps.Map(document.getElementById('map'), {
+               zoom: 8,
+               center:mlatlng                });}
       
-          var mapOptions = {
-          zoom: 8,
-          center: clg
-          }
-          map = new google.maps.Map(document.getElementById('map'), mapOptions);
-          };     
+//      function initMap() {
+  //        var llng = localStorage.getItem('loclng');
+    //      var llat = localStorage.getItem('loclat');
+      //    var mlatlng=new google.maps.LatLng(llat+","+llng)
+        //  var mapOptions = {
+          //zoom: 8,
+          //center: mlatlng
+          //}
+          //map = new google.maps.Map(document.getElementById('map'), mapOptions);
+          //};     
    </script>
    <body>
       <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCUXgb-Kajxm7KPMsApHtESHeU2XDQ29XY&callback=initMap"></script>
@@ -73,6 +77,6 @@
             <script>document.getElementById("email").innerHTML = "Email: "+localStorage.getItem("email")</script>
          </h5>
       </div>
-      <div id="map" style="width: 65%; height: 480px;"></div>
+      <div id="map" style="width: 65%; height: 320px;"></div>
    </body>
 </html>
