@@ -34,8 +34,9 @@
                document.getElementById('map'), {center: document.querySelector("#street"), zoom: 15});}
               
                function dispResults() {
-                 if(validInput("#fname",alphareg) && validInput("#lname",alphareg) && validInput("#street",addreg) && validInput("#phno",numreg)&&validInput("#lname",alphareg)&&validInput("#email",mailreg)&& confirm_email()&&validInput("#pwd",pwdreg)&&chkTerms()&&grecaptcha.getResponse())
-                 {document.write("Name:<h3 id='fName'>"+document.querySelector('#fName').value+"</h3> <h3 id='lName'>"+document.querySelector('#lName').value+"</h3><br>"+"Address: <h3 id='street'>"+document.querySelector('#street').value+"</h3><br>"+"Education: <h3 id='eduselect'>"+document.querySelector('#eduSelect').value +"</h3><br>Income: <h3 id='income'>"+document.querySelector('#IncSelect').value+"</h3> <br> Phone: <h3 id='phno'>"+document.querySelector('#phno').value+"</h3><br>User Email: <h3 id='email'>"+document.querySelector('#email').value)+"</h3>"}
+                 if(validInput("#fname",alphareg) && validInput("#lname",alphareg) && validInput("#street",addreg) && validInput("#phno",numreg)&&validInput("#lname",alphareg)&&validInput("#email",mailreg)&& confirm_email()&&validInput("#pwd",pwdreg)&&chkTerms())
+                 {document.write("<table><tr><td>Name:</td><td><input type='text' id='fName' disabled value='"+document.querySelector('#fName').value+' '+document.querySelector('#lName').value+"'></td></tr>" +"<tr><td>Address:</td> <td><input type='text' id='street' disabled value='"+document.querySelector('#street').value+"'></td></tr><tr>"+"<td>Education:</td> <td><input type='text' id='eduselect' disabled value='"+document.querySelector('#eduSelect').value +"'></td></tr><tr><td>Income: </td><td><input type='text' id='income' disabled value='"+document.querySelector('#IncSelect').value+"'></td></tr> <tr> <td>Phone: </td><td><input type='text' id='phno' disabled value='"+document.querySelector('#phno').value+"'></td></tr><tr><td>User Email: </td><td><input type='text' id='email' disabled value='"+document.querySelector('#email').value+"'></td></tr></table>");}
+                  document.write("<div id=map>");
                  else
                  document.querySelector("#Submit").innerHTML="Please correct the errors on the form and try again";
       
@@ -107,12 +108,13 @@
                   <td>
                      <select id="IncSelect">
                      <option value="" disabled selected>Choose not to Say</option>
-                     <option value="less than $ 50K">less than $ 50K</option>
-                     <option value="between $50-100 K">between $50-100 K</option>
-                     <option value="above $100 K">above $100 K</option>
+                     <option value="less than $ 50K">less than $50K</option>
+                     <option value="between $50-100 K">between $50-100K</option>
+                     <option value="above $100 K">above $100K</option>
                   </td>
                </tr>
             </table>
+            
             <input  id="phno" class="form-control" aria-describedby="materialRegisterFormPhoneHelpBlock" placeholder="* Phone Number" type="tel" id="phone" name="phone"
                pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" onblur="validInput('#phno',numreg)" required>
             <small id=phnoError style="color: red"></small>  
@@ -130,9 +132,9 @@
             <div class="card-body px-lg-5 pt-0">
                <input type="checkbox" class="form-check-input" id="chkbox" required>I Agree to the <a href="">terms and conditions</a>
             </div>
-            <div class="g-recaptcha" data-sitekey="6LdI2a8UAAAAAC36tXbZ6nu_OiCtGuJRRwTTFMtN"></div>
-            <button class="btn btn-outline-info btn-rounded btn-block my-4 waves-effect z-depth-0" onclick="dispResults()">Sign Up</button>
             <small id="submit" style="color: red"></small>
+            <button class="btn btn-outline-info btn-rounded btn-block my-4 waves-effect z-depth-0" onclick="dispResults()">Sign Up</button>
+            
          </form>
       </div>
       </form>
