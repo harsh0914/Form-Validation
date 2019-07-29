@@ -17,7 +17,7 @@
       <link rel="stylesheet" href="css/index.css">
    </head>
    <script>
-      var numreg =/^[2-9]\d{2}-\d{3}-\d{4}$/;
+      var numreg =/^\d{3}-\d{4}$/;
       var alphareg = /^[A-Za-z]+$/;
       var addreg=/^.{5,40}$/;
       var mailreg=/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
@@ -104,10 +104,10 @@
             <option value="between $50-100 K">between $50-100K</option>
             <option value="above $100 K">above $100K</option>
             <input  id="phno" class="form-control" aria-describedby="materialRegisterFormPhoneHelpBlock" placeholder="* Phone Number" type="tel" id="phone" name="phone"
-               pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" onblur="validInput('#phno',numreg)" required>
+               pattern="[0-9]{3}-[0-9]{4}" onblur="validInput('#phno',numreg)" required>
             <small id=phnoError style="color: red"></small>  
             <small id="materialRegisterFormPhoneHelpBlock" class="form-text text-muted mb-4">
-            (Format : xxx-xxx-xxxx) We will use this in case of emergency only.</small>
+            (Format : xxx-xxxx 7 digits, No area code) We will use this in case of emergency only.</small>
             <input type="email" id="Email" class="form-control" placeholder="Email" onblur="validInput('#Email',mailreg)">
             <small id="Emailerror" style="color: red"></small>
             <input type="text" id="cnfrm_email" class="form-control" placeholder="Confirm Email" onblur="confirm_email('#Email','#cnfrm_email')" >
